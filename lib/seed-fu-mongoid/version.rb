@@ -1,0 +1,3 @@
+module SeedFuMongoid
+  VERSION = "0.0.1"
+end
