@@ -6,9 +6,15 @@ No tests whatsoever but it works with my very simple Seed Fu-like seed data, so 
 Seed files in `db/fixtures/*.rb`:
 
 ``` ruby
-PermissionType.seed(id: 1, type: 'Users')
-PermissionType.seed(id: 2, type: 'Sites')
-PermissionType.seed(id: 3, type: 'Cats')
+PermissionType.seed do |s|
+  s.id = 1
+  s.type = 'Users'
+end
+
+PermissionType.seed do |s|
+  s.id = 2
+  s.type = 'Sites'
+end
 ```
 
 Then `rake db:seed_fu` if you're in Rails.
