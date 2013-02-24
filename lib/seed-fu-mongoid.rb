@@ -9,6 +9,18 @@ end
 
 # punch the duck out of Mongoid::Document
 
+module SeedFuMongoid
+  class << self
+    def seed
+      Dir['db/fixtures/**/*.rb'].each do |file|
+        puts "== Seed from #{file}"
+
+        load file
+      end
+    end
+  end
+end
+
 module Mongoid::Document
   module ClassMethods
     def seed_once(*constraints)

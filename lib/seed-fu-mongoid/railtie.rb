@@ -4,11 +4,7 @@ module SeedFuMongoid
       namespace :db do
         desc "Load seed data from db/fixtures"
         task :seed_fu => :environment do
-          Dir['db/fixtures/**/*.rb'].each do |file|
-            puts "== Seed from #{file}"
-
-            load file
-          end
+          SeedFuMongoid.seed
         end
       end
     end

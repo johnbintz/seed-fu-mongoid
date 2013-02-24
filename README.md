@@ -25,3 +25,6 @@ Simple!
 
 `require 'seed-fu-mongoid/capistrano'` to have your data get re-seeded on deploy.
 
+### Cucumber/RSpec
+
+`SeedFuMongoid.seed`
