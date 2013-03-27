@@ -31,8 +31,8 @@ module Mongoid::Document
       end
     end
 
-    def seed(*constraints, &block)
-      SeedFuMongoid::DocumentSeeder.new(self, constraints, block).seed!
+    def seed(*constraints_and_objects, &block)
+      SeedFuMongoid::DocumentSeeder.new(self, constraints_and_objects, block).seed!
     end
   end
 end

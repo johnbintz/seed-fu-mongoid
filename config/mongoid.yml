@@ -1,0 +1,6 @@
+test:
+  sessions:
+    default:
+      database: seed_fu_mongoid_test
+      hosts:
+        - localhost:27017

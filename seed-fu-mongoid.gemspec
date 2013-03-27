@@ -17,5 +17,12 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency 'mongoid'
+  gem.add_dependency 'mongoid', '>= 3.0.0'
+  gem.add_development_dependency 'cucumber'
+  gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'database_cleaner'
+  gem.add_development_dependency 'cuke-pack'
+  gem.add_development_dependency 'guard'
+  gem.add_development_dependency 'rb-fsevent'
+  gem.add_development_dependency 'guard-cucumber'
 end

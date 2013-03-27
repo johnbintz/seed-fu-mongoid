@@ -1,0 +1,2 @@
+<%= require 'cuke-pack/profiles' ; CukePack::Profiles.write %>
+
