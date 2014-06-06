@@ -11,9 +11,13 @@ end
 
 module SeedFuMongoid
   class << self
+    attr_accessor :quiet
+
     def seed
-      Dir['db/fixtures/**/*.rb'].each do |file|
-        puts "== Seed from #{file}"
+      files = Dir['db/fixtures/*.rb'].sort
+      files += Dir["db/fixtures/#{Rails.env}/*.rb"].sort
+      files.each do |file|
+        puts "== Seed from #{file}" unless quiet
 
         load file
       end
@@ -36,4 +40,3 @@ module Mongoid::Document
     end
   end
 end
-

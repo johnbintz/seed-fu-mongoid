@@ -71,7 +71,7 @@ module SeedFuMongoid
 
       def seed!
         data.each do |key, value|
-          document.send :"#{key}=", value
+          document.send :[]=, key, value
         end
 
         puts "#{@klass.name} #{document.attributes}"
