@@ -27,12 +27,8 @@ end
 
 module Mongoid::Document
   module ClassMethods
-    def seed_once(*constraints)
-      seeder = SeedFuMongoid::DocumentSeeder.new(self, constraints, block)
-
-      if seeder.new?
-        seeder.seed!
-      end
+    def seed_once(*constraints, &block)
+      SeedFuMongoid::DocumentSeeder.new(self, constraints, block).seed_once!
     end
 
     def seed(*constraints_and_objects, &block)

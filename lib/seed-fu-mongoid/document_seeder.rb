@@ -58,9 +58,9 @@ module SeedFuMongoid
         return @constraint_search if @constraint_search
 
         @constraint_search = {}
-        constraints.each do |constraint|
+        @constraints.each do |constraint|
           if data[constraint]
-            @constraint_search[constraint] = proxy[constraint]
+            @constraint_search[constraint] = data[constraint]
           else
             raise ConstraintNotDefined.new(constraint)
           end
@@ -78,6 +78,10 @@ module SeedFuMongoid
 
         document.upsert
       end
+
+      def new?
+        !document.persisted?
+      end
     end
 
     def create_document(block_or_object)
@@ -94,9 +98,20 @@ module SeedFuMongoid
       end
     end
 
-    def new?
-      !document.persisted?
+    def seed_once!
+      if @objects.empty?
+        document = create_document(@block)
+        if document.new?
+          document.seed!
+        end
+      else
+        @objects.each do |object|
+          document = create_document(object)
+          if document.new?
+            document.seed!
+          end
+        end
+      end
     end
   end
 end
-
