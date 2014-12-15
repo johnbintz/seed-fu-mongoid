@@ -74,7 +74,7 @@ module SeedFuMongoid
           document.send :[]=, key, value
         end
 
-        puts "#{@klass.name} #{document.attributes}"
+        puts "#{@klass.name} #{document.attributes}" unless SeedFuMongoid.quiet
 
         document.upsert
       end
